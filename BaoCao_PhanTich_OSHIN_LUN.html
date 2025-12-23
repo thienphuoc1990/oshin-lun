@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Phân Tích Dự Án OSHIN_LUN</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            margin: 2.54cm;
+            color: #333;
+        }
+        h1 {
+            color: #1a5490;
+            text-align: center;
+            font-size: 24pt;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #1a5490;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #1a5490;
+            font-size: 18pt;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4a90d9;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #2e5c8a;
+            font-size: 14pt;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        h4 {
+            color: #4a90d9;
+            font-size: 12pt;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        p {
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+        .metadata {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .abstract {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-left: 4px solid #1a5490;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #1a5490;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-left: 4px solid #4a90d9;
+            padding: 10px;
+            margin: 15px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 10pt;
+        }
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .section-number {
+            color: #1a5490;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 10pt;
+        }
+        .algorithm-box {
+            background-color: #e8f4f8;
+            border: 2px solid #4a90d9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .complexity {
+            background-color: #fff9e6;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <h1>BÁO CÁO PHÂN TÍCH DỰ ÁN</h1>
+    <h1 style="border:none; font-size: 22pt; margin-top: 0;">OSHIN_LUN - THUẬT TOÁN SINH HOÁN VỊ</h1>
+
+    <div class="metadata">
+        <p><strong>Ngày tạo báo cáo:</strong> 23/12/2025 10:48:04</p>
+        <p><strong>Phiên bản:</strong> 1.0</p>
+    </div>
+
+    <div class="abstract">
+        <strong>TÓM TẮT:</strong> Dự án OSHIN_LUN là một thư viện giáo dục về thuật toán sinh hoán vị,
+        được viết hoàn toàn bằng Python. Dự án triển khai 4 thuật toán khác nhau để sinh tất cả các
+        hoán vị của một tập hợp các phần tử, kèm theo các công cụ trực quan hóa, so sánh hiệu năng
+        và các hàm tiện ích hỗ trợ. Mục tiêu chính là cung cấp tài liệu học tập cho sinh viên và
+        lập trình viên Việt Nam về các cách tiếp cận khác nhau trong việc giải quyết bài toán sinh hoán vị.
+    </div>
+
+    <h2><span class="section-number">1.</span> GIỚI THIỆU DỰ ÁN</h2>
+
+    <h3>1.1. Tổng quan</h3>
+    <p>
+        <strong>OSHIN_LUN</strong> (từ tiếng Việt "Hoán vị") là một dự án mã nguồn mở tập trung vào
+        việc triển khai và phân tích các thuật toán sinh hoán vị. Dự án không chỉ cung cấp các
+        triển khai thuật toán mà còn đi kèm với công cụ trực quan hóa và so sánh hiệu năng,
+        giúp người học hiểu sâu hơn về cách hoạt động và đặc điểm của từng thuật toán.
+    </p>
+
+    <h3>1.2. Mục tiêu dự án</h3>
+    <ul>
+        <li><strong>Giáo dục:</strong> Cung cấp tài liệu học tập về thuật toán sinh hoán vị bằng tiếng Việt</li>
+        <li><strong>So sánh:</strong> Đưa ra công cụ so sánh hiệu năng giữa các thuật toán khác nhau</li>
+        <li><strong>Trực quan hóa:</strong> Giúp người học thấy rõ quá trình hoạt động của từng thuật toán</li>
+        <li><strong>Thực hành:</strong> Cung cấp các hàm tiện ích có thể sử dụng trong các dự án thực tế</li>
+    </ul>
+
+    <h3>1.3. Cấu trúc dự án</h3>
+    <div class="code-block">
+oshin_lun/
+├── README.md                    # Tài liệu hướng dẫn (136 dòng)
+├── permutation_algorithms.py    # Triển khai các thuật toán (359 dòng)
+├── demo.py                      # Demo và benchmark (301 dòng)
+├── visualization.py             # Công cụ trực quan hóa (365 dòng)
+└── .gitignore                   # Cấu hình Git
+    </div>
+    <p><strong>Tổng số dòng code:</strong> ~1,025 dòng Python</p>
+
+    <h2><span class="section-number">2.</span> PHÂN TÍCH CÁC THUẬT TOÁN</h2>
+
+    <p>
+        Dự án triển khai <span class="highlight">4 thuật toán chính</span> để sinh hoán vị,
+        mỗi thuật toán có đặc điểm và ứng dụng riêng. Dưới đây là phân tích chi tiết từng thuật toán:
+    </p>
+
+    <h3>2.1. Thuật toán Quay lui (Backtracking)</h3>
+    <div class="algorithm-box">
+        <h4>Nguyên lý hoạt động:</h4>
+        <p>
+            Thuật toán quay lui xây dựng hoán vị theo cách đệ quy, từng bước một. Tại mỗi vị trí,
+            thuật toán thử tất cả các phần tử chưa được sử dụng, sau đó đệ quy để điền các vị trí tiếp theo.
+        </p>
+
+        <h4>Các bước thực hiện:</h4>
+        <ol>
+            <li>Bắt đầu với một mảng rỗng</li>
+            <li>Tại mỗi bước, chọn một phần tử chưa được sử dụng</li>
+            <li>Thêm phần tử đó vào hoán vị hiện tại</li>
+            <li>Đệ quy để xây dựng phần còn lại</li>
+            <li>Khi đã điền đủ n phần tử, ta có một hoán vị hoàn chỉnh</li>
+            <li>Quay lui (backtrack) để thử các lựa chọn khác</li>
+        </ol>
+
+        <h4>Đặc điểm kỹ thuật:</h4>
+        <ul>
+            <li><strong>Độ phức tạp thời gian:</strong> <span class="complexity">O(n × n!)</span></li>
+            <li><strong>Độ phức tạp không gian:</strong> <span class="complexity">O(n)</span> (stack đệ quy)</li>
+            <li><strong>Thứ tự sinh:</strong> Không theo thứ tự đặc biệt nào</li>
+            <li><strong>Triển khai:</strong> Dòng 15-94 trong <code>permutation_algorithms.py</code></li>
+        </ul>
+
+        <h4>Ưu điểm:</h4>
+        <ul>
+            <li>Dễ hiểu và dễ triển khai</li>
+            <li>Có thể dễ dàng áp dụng các ràng buộc (constraints)</li>
+            <li>Phù hợp cho mục đích giáo dục</li>
+            <li>Có thể dừng sớm khi tìm được kết quả cần thiết</li>
+        </ul>
+
+        <h4>Nhược điểm:</h4>
+        <ul>
+            <li>Hiệu năng không tối ưu do factor n trong O(n × n!)</li>
+            <li>Sử dụng nhiều bộ nhớ cho stack đệ quy với n lớn</li>
+            <li>Không sinh theo thứ tự từ điển</li>
+        </ul>
+    </div>
+
+    <h3>2.2. Thuật toán Heap (Heap's Algorithm)</h3>
+    <div class="algorithm-box">
+        <h4>Nguyên lý hoạt động:</h4>
+        <p>
+            Heap's Algorithm sinh hoán vị bằng cách hoán đổi các phần tử một cách có hệ thống.
+            Đây là một trong những thuật toán hiệu quả nhất, vì mỗi hoán vị được tạo ra chỉ bằng
+            <strong>đúng một phép hoán đổi</strong> từ hoán vị trước đó.
+        </p>
+
+        <h4>Ý tưởng chính:</h4>
+        <ol>
+            <li>Sinh tất cả các hoán vị của n-1 phần tử đầu tiên</li>
+            <li>Với mỗi hoán vị đó, hoán đổi phần tử thứ n với từng phần tử khác</li>
+            <li>Cách hoán đổi phụ thuộc vào n là chẵn hay lẻ:
+                <ul>
+                    <li>Nếu n chẵn: hoán đổi với từng vị trí từ 0 đến n-1</li>
+                    <li>Nếu n lẻ: luôn hoán đổi với vị trí 0</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h4>Đặc điểm kỹ thuật:</h4>
+        <ul>
+            <li><strong>Độ phức tạp thời gian:</strong> <span class="complexity">O(n!)</span></li>
+            <li><strong>Độ phức tạp không gian:</strong> <span class="complexity">O(n)</span></li>
+            <li><strong>Thứ tự sinh:</strong> Không theo thứ tự đặc biệt</li>
+            <li><strong>Triển khai:</strong> Dòng 100-137 trong <code>permutation_algorithms.py</code></li>
+        </ul>
+
+        <h4>Ưu điểm:</h4>
+        <ul>
+            <li>Hiệu suất cao nhất trong các thuật toán triển khai</li>
+            <li>Mỗi hoán vị chỉ tốn 1 phép hoán đổi</li>
+            <li>Sử dụng ít bộ nhớ</li>
+            <li>Thực hiện in-place (không cần mảng phụ)</li>
+        </ul>
+
+        <h4>Nhược điểm:</h4>
+        <ul>
+            <li>Khó hiểu hơn so với Backtracking</li>
+            <li>Không sinh theo thứ tự từ điển</li>
+            <li>Khó áp dụng ràng buộc</li>
+        </ul>
+    </div>
+
+    <h3>2.3. Thuật toán Next Permutation</h3>
+    <div class="algorithm-box">
+        <h4>Nguyên lý hoạt động:</h4>
+        <p>
+            Thuật toán Next Permutation sinh các hoán vị theo <strong>thứ tự từ điển (lexicographic order)</strong>.
+            Với một hoán vị cho trước, thuật toán tìm hoán vị tiếp theo lớn hơn nhỏ nhất theo thứ tự từ điển.
+        </p>
+
+        <h4>Các bước chi tiết:</h4>
+        <ol>
+            <li><strong>Bước 1:</strong> Tìm pivot - vị trí i lớn nhất mà arr[i] < arr[i+1]
+                <ul><li>Nếu không tìm thấy, mảng đang ở hoán vị cuối cùng</li></ul>
+            </li>
+            <li><strong>Bước 2:</strong> Tìm successor - vị trí j lớn nhất mà arr[i] < arr[j]</li>
+            <li><strong>Bước 3:</strong> Hoán đổi arr[i] và arr[j]</li>
+            <li><strong>Bước 4:</strong> Đảo ngược đoạn từ i+1 đến cuối mảng</li>
+        </ol>
+
+        <div class="code-block">
+Ví dụ: [1, 3, 5, 4, 2] → [1, 4, 2, 3, 5]
+Bước 1: Tìm pivot i=1 (arr[1]=3 < arr[2]=5)
+Bước 2: Tìm successor j=3 (arr[1]=3 < arr[3]=4, không < arr[4]=2)
+Bước 3: Hoán đổi arr[1] và arr[3]: [1, 4, 5, 3, 2]
+Bước 4: Đảo ngược từ i+1=2: [1, 4, 2, 3, 5]
+        </div>
+
+        <h4>Đặc điểm kỹ thuật:</h4>
+        <ul>
+            <li><strong>Độ phức tạp mỗi lần:</strong> <span class="complexity">O(n)</span></li>
+            <li><strong>Độ phức tạp tổng thể:</strong> <span class="complexity">O(n × n!)</span></li>
+            <li><strong>Độ phức tạp không gian:</strong> <span class="complexity">O(1)</span></li>
+            <li><strong>Thứ tự sinh:</strong> Thứ tự từ điển (lexicographic)</li>
+            <li><strong>Triển khai:</strong> Dòng 144-208 trong <code>permutation_algorithms.py</code></li>
+        </ul>
+
+        <h4>Ưu điểm:</h4>
+        <ul>
+            <li>Sinh theo thứ tự từ điển - có thể dự đoán được</li>
+            <li>Có thể bắt đầu từ bất kỳ hoán vị nào</li>
+            <li>Không cần đệ quy</li>
+            <li>Sử dụng rất ít bộ nhớ (O(1))</li>
+            <li>Hữu ích khi cần tìm hoán vị kế tiếp của một cấu hình cụ thể</li>
+        </ul>
+
+        <h4>Nhược điểm:</h4>
+        <ul>
+            <li>Phức tạp hơn về mặt logic</li>
+            <li>Cần sắp xếp mảng ban đầu để bắt đầu</li>
+        </ul>
+    </div>
+
+    <h3>2.4. Itertools (Python Built-in)</h3>
+    <div class="algorithm-box">
+        <h4>Mô tả:</h4>
+        <p>
+            Python cung cấp hàm <code>itertools.permutations()</code> đã được tối ưu hóa cao trong C.
+            Đây là giải pháp production-ready được khuyến nghị sử dụng trong các dự án thực tế.
+        </p>
+
+        <h4>Đặc điểm kỹ thuật:</h4>
+        <ul>
+            <li><strong>Độ phức tạp:</strong> <span class="complexity">O(n!)</span></li>
+            <li><strong>Ngôn ngữ triển khai:</strong> C (highly optimized)</li>
+            <li><strong>Thứ tự sinh:</strong> Thứ tự từ điển</li>
+            <li><strong>Triển khai:</strong> Dòng 214-230 trong <code>permutation_algorithms.py</code></li>
+        </ul>
+
+        <h4>Ưu điểm:</h4>
+        <ul>
+            <li>Hiệu năng cao nhất (được viết bằng C)</li>
+            <li>API đơn giản, dễ sử dụng</li>
+            <li>Đã được kiểm thử kỹ lưỡng</li>
+            <li>Hỗ trợ tạo hoán vị với độ dài tùy chỉnh (r-permutation)</li>
+            <li>Là lựa chọn tốt nhất cho production code</li>
+        </ul>
+
+        <h4>Nhược điểm:</h4>
+        <ul>
+            <li>Không phù hợp cho mục đích học thuật (black box)</li>
+            <li>Không thể tùy chỉnh chi tiết cách hoạt động</li>
+        </ul>
+    </div>
+
+    <h2><span class="section-number">3.</span> SO SÁNH HIỆU NĂNG</h2>
+
+    <p>
+        Dự án cung cấp công cụ benchmark để so sánh hiệu năng của 4 thuật toán.
+        Dưới đây là kết quả phân tích dựa trên độ phức tạp lý thuyết:
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Thuật toán</th>
+                <th>Độ phức tạp thời gian</th>
+                <th>Độ phức tạp không gian</th>
+                <th>Thứ tự sinh</th>
+                <th>Hiệu năng thực tế</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Backtracking</td>
+                <td>O(n × n!)</td>
+                <td>O(n)</td>
+                <td>Không xác định</td>
+                <td>Chậm nhất</td>
+            </tr>
+            <tr>
+                <td>Heap's Algorithm</td>
+                <td>O(n!)</td>
+                <td>O(n)</td>
+                <td>Không xác định</td>
+                <td>Nhanh</td>
+            </tr>
+            <tr>
+                <td>Next Permutation</td>
+                <td>O(n × n!)</td>
+                <td>O(1)</td>
+                <td>Từ điển</td>
+                <td>Trung bình</td>
+            </tr>
+            <tr>
+                <td>Itertools</td>
+                <td>O(n!)</td>
+                <td>O(1)</td>
+                <td>Từ điển</td>
+                <td>Nhanh nhất</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>3.1. Phân tích kết quả</h3>
+    <ul>
+        <li><strong>Nhanh nhất:</strong> Itertools (C implementation) > Heap's Algorithm</li>
+        <li><strong>Tiết kiệm bộ nhớ nhất:</strong> Next Permutation và Itertools (O(1))</li>
+        <li><strong>Dễ hiểu nhất:</strong> Backtracking</li>
+        <li><strong>Thứ tự sinh có kiểm soát:</strong> Next Permutation và Itertools</li>
+    </ul>
+
+    <h3>3.2. Khuyến nghị sử dụng</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Tình huống</th>
+                <th>Thuật toán khuyến nghị</th>
+                <th>Lý do</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Production code</td>
+                <td>Itertools</td>
+                <td>Hiệu năng cao nhất, API đơn giản, đã được kiểm thử</td>
+            </tr>
+            <tr>
+                <td>Học thuật toán</td>
+                <td>Backtracking</td>
+                <td>Dễ hiểu, rõ ràng về logic</td>
+            </tr>
+            <tr>
+                <td>Cần thứ tự từ điển</td>
+                <td>Next Permutation</td>
+                <td>Sinh theo thứ tự từ điển, có thể dừng ở bất kỳ đâu</td>
+            </tr>
+            <tr>
+                <td>Cần hiệu năng cao, tự triển khai</td>
+                <td>Heap's Algorithm</td>
+                <td>O(n!), mỗi bước chỉ 1 swap</td>
+            </tr>
+            <tr>
+                <td>Có ràng buộc phức tạp</td>
+                <td>Backtracking</td>
+                <td>Dễ dàng thêm pruning và constraints</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2><span class="section-number">4.</span> CÁC TÍNH NĂNG BỔ SUNG</h2>
+
+    <h3>4.1. Hàm tiện ích (Utility Functions)</h3>
+    <p>Dự án cung cấp 6 hàm tiện ích hỗ trợ làm việc với hoán vị:</p>
+
+    <h4>4.1.1. count_permutations(arr)</h4>
+    <ul>
+        <li><strong>Chức năng:</strong> Đếm số lượng hoán vị của một mảng</li>
+        <li><strong>Đặc biệt:</strong> Xử lý cả trường hợp có phần tử trùng lặp</li>
+        <li><strong>Công thức:</strong> n! / (n1! × n2! × ... × nk!) với ni là số lần xuất hiện của phần tử i</li>
+    </ul>
+
+    <h4>4.1.2. is_permutation(arr1, arr2)</h4>
+    <ul>
+        <li><strong>Chức năng:</strong> Kiểm tra xem hai mảng có phải là hoán vị của nhau không</li>
+        <li><strong>Thuật toán:</strong> So sánh Counter của hai mảng</li>
+        <li><strong>Độ phức tạp:</strong> O(n)</li>
+    </ul>
+
+    <h4>4.1.3. permutation_rank(arr)</h4>
+    <ul>
+        <li><strong>Chức năng:</strong> Tìm thứ hạng (rank) của một hoán vị theo thứ tự từ điển</li>
+        <li><strong>Ứng dụng:</strong> Mã hóa, ánh xạ hoán vị sang số nguyên</li>
+        <li><strong>Độ phức tạp:</strong> O(n²)</li>
+    </ul>
+
+    <h4>4.1.4. kth_permutation(n, k)</h4>
+    <ul>
+        <li><strong>Chức năng:</strong> Tìm hoán vị thứ k mà không cần sinh tất cả</li>
+        <li><strong>Thuật toán:</strong> Sử dụng hệ thống số giai thừa (factorial number system)</li>
+        <li><strong>Độ phức tạp:</strong> O(n²)</li>
+        <li><strong>Lợi ích:</strong> Hiệu quả hơn nhiều so với sinh n! hoán vị</li>
+    </ul>
+
+    <h4>4.1.5. factorial(n)</h4>
+    <ul>
+        <li><strong>Chức năng:</strong> Tính n! (giai thừa)</li>
+        <li><strong>Triển khai:</strong> Đệ quy hoặc vòng lặp</li>
+    </ul>
+
+    <h3>4.2. Công cụ trực quan hóa</h3>
+    <p>
+        File <code>visualization.py</code> (365 dòng) cung cấp các công cụ giúp người học
+        hiểu rõ hơn về cách hoạt động của thuật toán:
+    </p>
+
+    <h4>4.2.1. Backtracking Visualization</h4>
+    <ul>
+        <li>Hiển thị từng bước của quá trình quay lui</li>
+        <li>Sử dụng màu sắc ANSI để phân biệt các trạng thái</li>
+        <li>Có độ trễ giữa các bước để quan sát dễ dàng</li>
+    </ul>
+
+    <h4>4.2.2. Next Permutation Animation</h4>
+    <ul>
+        <li>Hiển thị tất cả các hoán vị theo thứ tự từ điển</li>
+        <li>Animation từng bước một</li>
+        <li>Đánh số thứ tự từng hoán vị</li>
+    </ul>
+
+    <h4>4.2.3. Step-by-step Next Permutation</h4>
+    <ul>
+        <li>Phân tích chi tiết 4 bước của thuật toán</li>
+        <li>Hiển thị pivot, successor, và các thao tác</li>
+        <li>Có màu sắc để dễ theo dõi</li>
+    </ul>
+
+    <h4>4.2.4. Decision Tree Visualization</h4>
+    <ul>
+        <li>Vẽ cây quyết định của thuật toán Backtracking</li>
+        <li>Hiển thị dạng text với indent</li>
+        <li>Giúp hiểu rõ cấu trúc đệ quy</li>
+    </ul>
+
+    <h3>4.3. Chương trình Demo</h3>
+    <p>
+        File <code>demo.py</code> (301 dòng) cung cấp menu tương tác với 8 tùy chọn:
+    </p>
+    <ol>
+        <li>Demo cơ bản - Sinh hoán vị đơn giản</li>
+        <li>Demo với chuỗi - Hoán vị các ký tự</li>
+        <li>So sánh hiệu năng - Benchmark 4 thuật toán</li>
+        <li>Demo các hàm tiện ích - Thử nghiệm utility functions</li>
+        <li>Trace thuật toán Backtracking - Xem chi tiết từng bước</li>
+        <li>Trace thuật toán Next Permutation - Xem chi tiết từng bước</li>
+        <li>Interactive mode - Nhập dữ liệu tùy chỉnh</li>
+        <li>Thoát</li>
+    </ol>
+
+    <h2><span class="section-number">5.</span> ỨNG DỤNG THỰC TẾ</h2>
+
+    <p>Thuật toán sinh hoán vị có nhiều ứng dụng trong thực tế:</p>
+
+    <h3>5.1. Bài toán tối ưu hóa tổ hợp</h3>
+    <ul>
+        <li><strong>Traveling Salesman Problem (TSP):</strong> Tìm đường đi ngắn nhất qua tất cả các thành phố</li>
+        <li><strong>Job Scheduling:</strong> Sắp xếp công việc để tối ưu thời gian hoàn thành</li>
+        <li><strong>Task Assignment:</strong> Phân công nhiệm vụ cho nhân viên</li>
+    </ul>
+
+    <h3>5.2. Mật mã học</h3>
+    <ul>
+        <li><strong>Sinh khóa:</strong> Tạo các khóa mã hóa từ hoán vị</li>
+        <li><strong>Brute force attack:</strong> Thử tất cả các khả năng (mục đích giáo dục)</li>
+        <li><strong>Permutation cipher:</strong> Mã hóa dựa trên hoán vị vị trí</li>
+    </ul>
+
+    <h3>5.3. Game Development</h3>
+    <ul>
+        <li><strong>Sinh trạng thái game:</strong> Tạo các cấu hình khác nhau</li>
+        <li><strong>Puzzle solving:</strong> Giải các bài toán xếp hình, sắp xếp</li>
+        <li><strong>AI training:</strong> Sinh dữ liệu huấn luyện đa dạng</li>
+    </ul>
+
+    <h3>5.4. Toán học và Nghiên cứu</h3>
+    <ul>
+        <li><strong>Tìm kiếm mẫu:</strong> Phát hiện các pattern trong dữ liệu</li>
+        <li><strong>Chứng minh định lý:</strong> Kiểm tra tính đúng đắn với mọi trường hợp</li>
+        <li><strong>Thống kê:</strong> Permutation test trong thống kê học</li>
+    </ul>
+
+    <h2><span class="section-number">6.</span> CÔNG NGHỆ VÀ CÔNG CỤ</h2>
+
+    <h3>6.1. Ngôn ngữ lập trình</h3>
+    <ul>
+        <li><strong>Python 3:</strong> Ngôn ngữ chính của dự án</li>
+        <li><strong>Type Hints:</strong> Sử dụng để cải thiện khả năng đọc code</li>
+    </ul>
+
+    <h3>6.2. Thư viện chuẩn Python</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Thư viện</th>
+                <th>Mục đích sử dụng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>typing</td>
+                <td>Type hints (List[Any], Generator, etc.)</td>
+            </tr>
+            <tr>
+                <td>itertools</td>
+                <td>Built-in permutation generator</td>
+            </tr>
+            <tr>
+                <td>collections</td>
+                <td>Counter cho xử lý phần tử trùng lặp</td>
+            </tr>
+            <tr>
+                <td>time</td>
+                <td>Benchmark và đo hiệu năng</td>
+            </tr>
+            <tr>
+                <td>os</td>
+                <td>Cross-platform screen clearing</td>
+            </tr>
+            <tr>
+                <td>sys</td>
+                <td>System operations</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>6.3. Đặc điểm kỹ thuật</h3>
+    <ul>
+        <li><strong>Không có dependencies bên ngoài:</strong> Chỉ sử dụng Python standard library</li>
+        <li><strong>Generator functions:</strong> Tiết kiệm bộ nhớ, không lưu toàn bộ hoán vị</li>
+        <li><strong>In-place modifications:</strong> Tối ưu bộ nhớ khi có thể</li>
+        <li><strong>ANSI color codes:</strong> Đầu ra terminal đẹp mắt</li>
+        <li><strong>Cross-platform:</strong> Chạy trên Windows, Linux, macOS</li>
+    </ul>
+
+    <h2><span class="section-number">7.</span> CHẤT LƯỢNG CODE</h2>
+
+    <h3>7.1. Tài liệu và Comments</h3>
+    <ul>
+        <li>Tất cả hàm đều có docstring chi tiết bằng tiếng Việt</li>
+        <li>Ví dụ sử dụng trong docstring</li>
+        <li>Giải thích rõ ràng về độ phức tạp</li>
+        <li>README.md 136 dòng hướng dẫn chi tiết</li>
+    </ul>
+
+    <h3>7.2. Code Style</h3>
+    <ul>
+        <li>Sử dụng Type Hints đầy đủ</li>
+        <li>Tên biến và hàm rõ ràng, có ý nghĩa</li>
+        <li>Cấu trúc code rõ ràng, dễ đọc</li>
+        <li>Error handling cho user input</li>
+    </ul>
+
+    <h3>7.3. Performance Optimization</h3>
+    <ul>
+        <li>Sử dụng generator thay vì list để tiết kiệm bộ nhớ</li>
+        <li>In-place operations khi có thể</li>
+        <li>Tránh copy không cần thiết</li>
+        <li>Benchmark để so sánh hiệu năng</li>
+    </ul>
+
+    <h2><span class="section-number">8.</span> HƯỚNG PHÁT TRIỂN</h2>
+
+    <h3>8.1. Tính năng có thể bổ sung</h3>
+    <ul>
+        <li><strong>Permutation with repetition:</strong> Hoán vị có lặp</li>
+        <li><strong>Circular permutation:</strong> Hoán vị vòng tròn</li>
+        <li><strong>Partial permutation:</strong> Chọn k phần tử từ n phần tử</li>
+        <li><strong>GUI Application:</strong> Giao diện đồ họa để trực quan hóa tốt hơn</li>
+        <li><strong>Web Interface:</strong> Chạy trên browser</li>
+        <li><strong>More algorithms:</strong> Steinhaus–Johnson–Trotter algorithm, etc.</li>
+    </ul>
+
+    <h3>8.2. Cải tiến có thể thực hiện</h3>
+    <ul>
+        <li>Thêm unit tests để đảm bảo tính đúng đắn</li>
+        <li>Thêm CI/CD pipeline</li>
+        <li>Performance profiling chi tiết hơn</li>
+        <li>Hỗ trợ multiprocessing cho dữ liệu lớn</li>
+        <li>Xuất kết quả ra file (CSV, JSON)</li>
+        <li>Thêm tiếng Anh cho documentation</li>
+    </ul>
+
+    <h2><span class="section-number">9.</span> KẾT LUẬN</h2>
+
+    <h3>9.1. Tổng kết</h3>
+    <p>
+        Dự án <strong>OSHIN_LUN</strong> là một dự án giáo dục chất lượng cao về thuật toán sinh hoán vị.
+        Với 4 thuật toán được triển khai đầy đủ, kèm theo công cụ trực quan hóa và benchmark,
+        dự án cung cấp một tài liệu học tập toàn diện cho sinh viên và lập trình viên Việt Nam.
+    </p>
+
+    <h3>9.2. Điểm mạnh của dự án</h3>
+    <ul>
+        <li><span class="highlight">Tài liệu đầy đủ bằng tiếng Việt</span> - dễ tiếp cận cho người Việt</li>
+        <li><span class="highlight">Nhiều thuật toán khác nhau</span> - cho phép so sánh và lựa chọn</li>
+        <li><span class="highlight">Công cụ trực quan hóa tốt</span> - giúp hiểu rõ cách hoạt động</li>
+        <li><span class="highlight">Code chất lượng cao</span> - có type hints, docstring, clean code</li>
+        <li><span class="highlight">Không dependency</span> - dễ cài đặt và sử dụng</li>
+        <li><span class="highlight">Interactive demos</span> - học tập thông qua thực hành</li>
+    </ul>
+
+    <h3>9.3. Giá trị mang lại</h3>
+    <ul>
+        <li><strong>Giáo dục:</strong> Tài liệu học tập về thuật toán tổ hợp</li>
+        <li><strong>Thực hành:</strong> Code có thể sử dụng trong dự án thực tế</li>
+        <li><strong>Nghiên cứu:</strong> So sánh hiệu năng các thuật toán</li>
+        <li><strong>Tham khảo:</strong> Mẫu code Python chất lượng cao</li>
+    </ul>
+
+    <h3>9.4. Đánh giá chung</h3>
+    <p>
+        Dự án thể hiện sự đầu tư tâm huyết trong việc giáo dục về thuật toán.
+        Với <strong>~1,025 dòng code Python</strong> chất lượng cao, tài liệu chi tiết,
+        và các công cụ hỗ trợ đa dạng, OSHIN_LUN là một tài nguyên học tập quý giá
+        về thuật toán sinh hoán vị cho cộng đồng lập trình viên Việt Nam.
+    </p>
+
+    <div class="highlight" style="padding: 15px; margin: 20px 0; background-color: #e8f4f8; border-left: 5px solid #1a5490;">
+        <strong>Khuyến nghị:</strong> Dự án phù hợp làm tài liệu giảng dạy trong các môn học
+        về Cấu trúc dữ liệu và Giải thuật, Lập trình nâng cao, hoặc Toán rời rạc.
+        Sinh viên có thể học hỏi không chỉ về thuật toán mà còn về cách viết code Python
+        chuyên nghiệp với type hints, docstring, và clean architecture.
+    </div>
+
+    <h2><span class="section-number">10.</span> TÀI LIỆU THAM KHẢO</h2>
+
+    <h3>10.1. Source Code</h3>
+    <ul>
+        <li><code>permutation_algorithms.py</code> - 359 dòng: Triển khai 4 thuật toán chính</li>
+        <li><code>demo.py</code> - 301 dòng: Chương trình demo và benchmark</li>
+        <li><code>visualization.py</code> - 365 dòng: Công cụ trực quan hóa</li>
+        <li><code>README.md</code> - 136 dòng: Tài liệu hướng dẫn</li>
+    </ul>
+
+    <h3>10.2. Thuật toán</h3>
+    <ul>
+        <li>Backtracking Algorithm - Thuật toán quay lui cổ điển</li>
+        <li>Heap's Algorithm - B.R. Heap (1963)</li>
+        <li>Next Permutation Algorithm - Narayana Pandita (14th century)</li>
+        <li>Python itertools - Python Standard Library</li>
+    </ul>
+
+    <h3>10.3. Concepts</h3>
+    <ul>
+        <li>Permutation - Hoán vị</li>
+        <li>Lexicographic Order - Thứ tự từ điển</li>
+        <li>Factorial Number System - Hệ thống số giai thừa</li>
+        <li>Generator Functions - Hàm sinh Python</li>
+        <li>Time Complexity - Độ phức tạp thời gian</li>
+        <li>Space Complexity - Độ phức tạp không gian</li>
+    </ul>
+
+    <div class="footer">
+        <p><strong>Báo cáo được tạo tự động từ phân tích source code</strong></p>
+        <p>Dự án: OSHIN_LUN - Permutation Generation Algorithms</p>
+        <p>Repository: /home/phuocdinh/projects/mine/oshin_lun</p>
+        <p>Ngày tạo: 23/12/2025 10:48:04</p>
+        <hr>
+        <p style="font-size: 9pt; color: #999;">
+            Để chuyển đổi file HTML này sang DOCX:<br>
+            1. Mở file HTML bằng Microsoft Word hoặc LibreOffice Writer<br>
+            2. Chọn File → Save As → Chọn định dạng "Word Document (.docx)"<br>
+            3. Lưu file với tên mong muốn
+        </p>
+    </div>
+</body>
+</html>
